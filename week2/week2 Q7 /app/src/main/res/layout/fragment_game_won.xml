@@ -26,7 +26,7 @@
         android:background="@color/youWinBackground">
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/profileButton"
             android:layout_width="144dp"
             android:layout_height="51dp"
             android:paddingStart="@dimen/button_padding"
@@ -45,15 +45,16 @@
             android:id="@+id/nextMatchButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
             android:paddingStart="@dimen/button_padding"
             android:paddingEnd="@dimen/button_padding"
             android:text="Next Match"
             android:textColor="@color/youWinDark"
             android:textSize="@dimen/button_text_size"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/button"
+            app:layout_constraintBottom_toTopOf="@+id/profileFragment"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/youWinImage" />
 
