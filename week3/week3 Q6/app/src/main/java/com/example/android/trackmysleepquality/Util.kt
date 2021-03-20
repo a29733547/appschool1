@@ -21,7 +21,10 @@ import android.content.res.Resources
 import android.os.Build
 import android.text.Html
 import android.text.Spanned
+import android.widget.EditText
 import androidx.core.text.HtmlCompat
+import androidx.databinding.BindingAdapter
+import androidx.databinding.InverseMethod
 import com.example.android.trackmysleepquality.database.SleepNight
 import java.text.SimpleDateFormat
 
@@ -44,6 +47,16 @@ fun convertNumericQualityToString(quality: Int, resources: Resources): String {
     }
     return qualityString
 }
+/*
+fun convertNumericQualityToString1111(quality: String, resources: Resources): String {
+    var qualityString = resources.getString(R.string.three_ok)
+    when (quality) {
+        String() -> qualityString = ""
+
+    }
+    return qualityString
+}
+*/
 
 
 
@@ -61,6 +74,7 @@ fun convertLongToDateString(systemTime: Long): String {
     return SimpleDateFormat("EEEE MMM-dd-yyyy' Time: 'HH:mm")
             .format(systemTime).toString()
 }
+
 
 /**
  * Takes a list of SleepNights and converts and formats it into one string for display.
@@ -90,7 +104,8 @@ fun formatNights(nights: List<SleepNight>, resources: Resources): Spanned {
                 append(resources.getString(R.string.quality))
                 append("\t${convertNumericQualityToString(it.sleepQuality, resources)}<br>")
                 append(resources.getString(R.string.sleepinformation))
-                append("\t${convertNumericQualityToString(it.sleepInformation, resources)}<br>")
+                append("\t${it.sleepInformation}<br>")
+
                 append(resources.getString(R.string.hours_slept))
                 // Hours
                 append("\t ${it.endTimeMilli.minus(it.startTimeMilli) / 1000 / 60 / 60}:")
@@ -107,3 +122,7 @@ fun formatNights(nights: List<SleepNight>, resources: Resources): Spanned {
         return HtmlCompat.fromHtml(sb.toString(), HtmlCompat.FROM_HTML_MODE_LEGACY)
     }
 }
+
+
+
+

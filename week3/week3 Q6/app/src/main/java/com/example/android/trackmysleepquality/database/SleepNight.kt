@@ -36,8 +36,6 @@ data class SleepNight(
         var sleepQuality: Int = -1,
 
         @ColumnInfo(name = "sleep_information")
-        var sleepInformation: Int =1
-
+        var sleepInformation: String? = ""
 )
-
 

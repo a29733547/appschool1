@@ -17,6 +17,10 @@
 package com.example.android.trackmysleepquality.sleepquality
 
 import android.app.Application
+import android.widget.EditText
+import androidx.databinding.Bindable
+import androidx.databinding.BindingAdapter
+import androidx.databinding.InverseMethod
 import androidx.lifecycle.*
 import com.example.android.trackmysleepquality.database.SleepDatabaseDao
 import com.example.android.trackmysleepquality.database.SleepNight
@@ -29,9 +33,10 @@ import kotlinx.coroutines.*
  * @param sleepNightKey The key of the current night we are working on.
  */
 class SleepQualityViewModel(
+
         private val sleepNightKey: Long = 0L,
         val database: SleepDatabaseDao) : ViewModel() {
-
+        var textString = ""
 
     /**
      *
@@ -72,22 +77,26 @@ class SleepQualityViewModel(
         viewModelScope.launch {
                 val tonight = database.get(sleepNightKey) ?: return@launch
                 tonight.sleepQuality = quality
+                tonight.sleepInformation = textString
                 database.update(tonight)
 
-            // Setting this state variable to true will alert the observer and trigger navigation.
-            _navigateToSleepTracker.value = true
-        }
-    }
-    fun onSetSleepInformation(quality: Int) {
-        viewModelScope.launch {
-            val tonight = database.get(sleepNightKey) ?: return@launch
-            tonight.sleepInformation = quality
-            database.update(tonight)
+//            _navigateToSleepTracker.value = editTextSleep.value as Boolean?
+//            _displayedEditTextSleep.value = editTextSleep.value
 
             // Setting this state variable to true will alert the observer and trigger navigation.
             _navigateToSleepTracker.value = true
         }
     }
 
+//    fun onTest(){
+//        print("1234")
+//    }
+//
+/*    @Bindable
+    val editTextSleep = MutableLiveData<String>()
+    private val _displayedEditTextSleep = MutableLiveData<String>()
+    val displayedEditTextSleep : LiveData<String>
+    get() = _displayedEditTextSleep*/
 }
+
 

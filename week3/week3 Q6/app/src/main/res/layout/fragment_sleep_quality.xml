@@ -27,6 +27,11 @@
         <variable
             name="sleepQualityViewModel"
             type="com.example.android.trackmysleepquality.sleepquality.SleepQualityViewModel" />
+<!--        <variable
+            name="sleepQualityViewModel1"
+            type="com.example.android.trackmysleepquality.sleeptracker.SleepTrackerViewModel" />-->
+
+
     </data>
 
     <!-- Start of the visible fragment layout using ConstraintLayout -->
@@ -126,6 +131,7 @@
             app:layout_constraintTop_toTopOf="@+id/quality_four_image"
             app:srcCompat="@drawable/ic_sleep_5" />
 
+
         <EditText
             android:id="@+id/quality_sleep_information"
             android:layout_width="0dp"
@@ -135,8 +141,9 @@
             android:ems="10"
             android:gravity="center"
             android:hint="Please enter any information for this night"
+            android:importantForAutofill="no"
             android:inputType="textPersonName"
-            android:onClick="@{() -> sleepQualityViewModel.onSetSleepQuality(6)}"
+            android:text="@={sleepQualityViewModel.textString}"
 
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

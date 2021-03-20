@@ -165,6 +165,7 @@ class SleepTrackerViewModel(
         }
     }
 
+
     /**
      * Executes when the STOP button is clicked.
      */
@@ -186,6 +187,8 @@ class SleepTrackerViewModel(
         }
     }
 
+
+
     /**
      * Executes when the CLEAR button is clicked.
      */
@@ -201,4 +204,5 @@ class SleepTrackerViewModel(
         // Show a snackbar message, because it's friendly.
         _showSnackbarEvent.value = true
     }
+
 }

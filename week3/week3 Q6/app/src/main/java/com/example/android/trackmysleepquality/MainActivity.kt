@@ -16,8 +16,19 @@
 
 package com.example.android.trackmysleepquality
 
+import android.graphics.drawable.shapes.OvalShape
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import com.example.android.trackmysleepquality.database.SleepNight
+import com.example.android.trackmysleepquality.databinding.FragmentSleepQualityBinding
+import com.example.android.trackmysleepquality.sleepquality.SleepQualityViewModel
+import com.example.android.trackmysleepquality.sleeptracker.SleepTrackerViewModel
+import kotlinx.android.synthetic.main.fragment_sleep_quality.*
+import java.util.EnumSet.of
 
 
 /**
@@ -48,5 +59,40 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_main)
+
     }
 }
+
+/*class MainActivity : AppCompatActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        val mainViewModel = ViewModelProvider(this).get(SleepQualityViewModel::class.java)
+
+        DataBindingUtil.setContentView<FragmentSleepQualityBinding>(
+                this, R.layout.activity_main).apply {
+                this.setLifecycleOwner(this@MainActivity)
+                this.sleepQualityViewModel =  mainViewModel}
+
+        mainViewModel.editTextSleep.observe(this, Observer {
+
+        })
+
+    }
+}*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
