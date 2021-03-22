@@ -19,9 +19,12 @@ package com.example.android.marsrealestate.network
 
 import android.os.Parcelable
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.Transformations
+import com.example.android.marsrealestate.R
 import com.example.android.marsrealestate.overview.MarsApiStatus
 import com.squareup.moshi.Json
 import kotlinx.android.parcel.Parcelize
+import kotlin.math.roundToLong
 
 /**
  * Gets Mars real estate property information from the Mars API Retrofit service and updates the
@@ -38,4 +41,11 @@ data class MarsProperty(
         val price: Double) : Parcelable {
     val isRental
         get() = type == "rent"
+    var displayType = if(isRental)
+    {R.string.type_for_rent} else {R.string.type_for_sale}
+
+/*    var displayPrice = if(isRental)
+    {R.string.display_price_monthly_rental} else {R.string.display_price}*/
+
+    var displayPrice = if (isRental) {"$" + price.toLong() + "/month"} else { "$" + price }
 }
